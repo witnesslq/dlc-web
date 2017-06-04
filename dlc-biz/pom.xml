@@ -15,7 +15,6 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<ignite.version>1.9.0</ignite.version>
 	</properties>
 
 	<dependencies>
@@ -24,28 +23,6 @@
 			<artifactId>dlc-dal</artifactId>
 			<version>1.0.0</version>
 		</dependency>
-				<dependency>
-			<groupId>com.happygo.dlc</groupId>
-			<artifactId>dlc-base</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-		<!-- ignite-api -->
-		<dependency>
-			<groupId>org.apache.ignite</groupId>
-			<artifactId>ignite-core</artifactId>
-			<version>${ignite.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.ignite</groupId>
-			<artifactId>ignite-spring</artifactId>
-			<version>${ignite.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.ignite</groupId>
-			<artifactId>ignite-indexing</artifactId>
-			<version>${ignite.version}</version>
-		</dependency>
-		<!-- ignite-api end -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
