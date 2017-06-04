@@ -1,4 +1,4 @@
-package org.dlc.common;
+package com.happygo.dlc.biz;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

@@ -1,4 +1,4 @@
-package org.dlc.dal;
+package com.happygo.dlc.dal;
 
 /**
  * Hello world!
