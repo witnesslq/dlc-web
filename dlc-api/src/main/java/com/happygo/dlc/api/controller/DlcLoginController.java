@@ -14,6 +14,7 @@
 package com.happygo.dlc.api.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -49,7 +50,7 @@ public class DlcLoginController {
 	 * @param password
 	 * @return ModelAndView
 	 */
-	@GetMapping(value = "/login", produces = { "application/json" })
+	@PostMapping(value = "/login", produces = { "application/json" })
 	public ModelAndView dlcLogin(@RequestParam(value = "account") String email,
 			@RequestParam(value = "pwd") String password) {
 		if (Strings.isNotEmpty(email) && Strings.isNotEmpty(password)) {
