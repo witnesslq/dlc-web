@@ -17,8 +17,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -43,17 +43,22 @@ public class DlcLogQueryController {
 	private DlcLogQueryService dlcLogQueryService;
 	
 	/**
-	* @MethodName: logQuery
-	* @Description: the method logQuery
-	* @param keyWord
-	* @return String
-	*/
-	@GetMapping(value = "/log/query/{keyWord}", produces = {"application/json"})
-	public ModelAndView logQuery(@PathVariable("keyWord") String keyWord) {
+	 * @MethodName: logQuery
+	 * @Description: the method logQuery
+	 * @param keyWord
+	 * @return String
+	 */
+	@GetMapping(value = "/log/query", produces = { "application/json" })
+	public ModelAndView logQuery(
+			@RequestParam(value = "keyWord", required = false) String keyWord) {
+		long startTime = System.currentTimeMillis();
 		List<DlcLog> queryDlcLogs = dlcLogQueryService.logQuery(keyWord);
+		long endTime = System.currentTimeMillis();
+		long searchTime = endTime - startTime;
 		ModelAndView modelAndView = new ModelAndView("search_results");
 		modelAndView.addObject("dlcLogs", queryDlcLogs);
 		modelAndView.addObject("keyWord", keyWord);
+		modelAndView.addObject("searchTime", searchTime/1000.0);
 		return modelAndView;
 	}
 }
