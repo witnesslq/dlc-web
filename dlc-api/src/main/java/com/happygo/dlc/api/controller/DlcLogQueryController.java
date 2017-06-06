@@ -58,7 +58,7 @@ public class DlcLogQueryController {
 		ModelAndView modelAndView = new ModelAndView("search_results");
 		modelAndView.addObject("dlcLogs", queryDlcLogs);
 		modelAndView.addObject("keyWord", keyWord);
-		modelAndView.addObject("searchTime", searchTime/1000);
+		modelAndView.addObject("searchTime", searchTime/1000.0);
 		return modelAndView;
 	}
 }
