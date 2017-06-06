@@ -19,10 +19,12 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.ignite.Ignite;
-import org.apache.ignite.resources.IgniteInstanceResource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.happgo.dlc.base.DlcLog;
-import com.happygo.dlc.dal.DlcLogQueryCallback;
+import com.happygo.dlc.biz.service.DlcLogQueryService;
+import com.happygo.dlc.dal.access.DlcLogQueryCallback;
 
 /**
  * ClassName:DlcLogQueryServiceImpl
@@ -30,12 +32,13 @@ import com.happygo.dlc.dal.DlcLogQueryCallback;
  * @author sxp (1378127237@qq.com) 
  * @date:2017年6月4日 上午9:25:42
  */
+@Service
 public class DlcLogQueryServiceImpl implements DlcLogQueryService {
 	
 	/**
 	 * Ignite the ignite 
 	 */
-	@IgniteInstanceResource
+	@Autowired
 	private Ignite ignite;
 
 	/*
