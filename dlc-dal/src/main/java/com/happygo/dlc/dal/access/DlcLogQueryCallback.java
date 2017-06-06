@@ -11,7 +11,7 @@
 * @author sxp (1378127237@qq.com) 
 * @version 1.0.0 
 */
-package com.happygo.dlc.dal;
+package com.happygo.dlc.dal.access;
 
 import java.util.List;
 
