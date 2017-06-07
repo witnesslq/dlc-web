@@ -24,10 +24,5 @@
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-yaml</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>com.happygo.dlc</groupId>
-			<artifactId>dlc-ignite</artifactId>
-			<version>1.0.0</version>
-		</dependency>
 	</dependencies>
 </project>
