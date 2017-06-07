@@ -15,6 +15,8 @@ package com.happygo.dlc.api.controller;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +26,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.happgo.dlc.base.DlcLog;
 import com.happygo.dlc.biz.service.DlcLogQueryService;
+import com.happygo.dlc.common.entity.DlcLogResult;
+import com.happygo.dlc.common.entity.helper.DlcLogResultHelper;
 
 /**
  * ClassName:DlcLogQueryController
@@ -35,6 +39,11 @@ import com.happygo.dlc.biz.service.DlcLogQueryService;
 @RestController
 @RequestMapping("/dlc")
 public class DlcLogQueryController {
+	
+	/**
+	 * Logger the LOGGER 
+	 */
+	private static final Logger LOGGER = LogManager.getLogger();
 	
 	/** 
 	* The field dlcLogQueryService
@@ -55,10 +64,10 @@ public class DlcLogQueryController {
 		List<DlcLog> queryDlcLogs = dlcLogQueryService.logQuery(keyWord);
 		long endTime = System.currentTimeMillis();
 		long searchTime = endTime - startTime;
+		DlcLogResult dlcLogResult = DlcLogResultHelper.buildDlcLogResult(
+				keyWord, searchTime, queryDlcLogs);
 		ModelAndView modelAndView = new ModelAndView("search_results");
-		modelAndView.addObject("dlcLogs", queryDlcLogs);
-		modelAndView.addObject("keyWord", keyWord);
-		modelAndView.addObject("searchTime", searchTime/1000.0);
+		modelAndView.addObject("dlcLogResult", dlcLogResult);
 		return modelAndView;
 	}
 }
