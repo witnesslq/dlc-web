@@ -1,6 +1,6 @@
 Configutation:
   name: Default
- 
+  packages: com.happygo.dlc.log
   Properties:
     Property:
       name: log-path
@@ -25,6 +25,20 @@ Configutation:
             size: 100 MB
         DefaultRollOverStrategy:
           max: 10000
+    
+    Lucene:
+      name: LuceneAppender
+      target: F:\lucene_index
+      IndexField: 
+          name: level
+          pattern: "%-5level"
+      IndexField: 
+          name: time
+          pattern: "%d{UNIX_MILLIS}"
+          type: LongField
+      IndexField: 
+          name: content
+          pattern: "%p %c - %m%n"
  
   Loggers:
  
@@ -34,4 +48,4 @@ Configutation:
         AppenderRef:
           - ref: Console_Appender
           - ref: RollingFile_Appender
-          
+          - ref: LuceneAppender
