@@ -44,6 +44,7 @@ public class DlcLogResultHelper {
 		dlcLogResult.setKeyWord(keyWord);
 		dlcLogResult.setSearchTime(String.valueOf(searchTime/1000.0));
 		if (dlcLogs == null || dlcLogs.isEmpty()) {
+			dlcLogResult.setDlcLogBaseResults(new ArrayList<DlcLogBaseResult>(0));
 			return dlcLogResult;
 		}
 		List<DlcLogBaseResult> baseResults = new ArrayList<DlcLogBaseResult>();
@@ -67,7 +68,7 @@ public class DlcLogResultHelper {
 		baseResult.setHostIP(dlcLog.getHostIp());
 		baseResult.setLogRecordTime(DateUtils.date2String(dlcLog.getTime(),
 				DateConstants.YYYY_MM_DD_HH_MM_SSS));
-		baseResult.setSystemName("dlc-web");
+		baseResult.setSystemName(dlcLog.getSystemName());
 		return baseResult;
 	}
 }
