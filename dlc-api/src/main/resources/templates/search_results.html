@@ -23,8 +23,8 @@
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
                         <h2>
-                                为您找到相关结果约${dlcLogResult.dlcLogBaseResults?size}个： <span class="text-navy">${dlcLogResult.keyWord}</span>
-                            </h2>
+                                为您找到相关结果约${dlcLogResult.dlcLogBaseResults?size!0}个： <span class="text-navy">${dlcLogResult.keyWord}</span>
+                        </h2>
                         <small>搜索用时  (${dlcLogResult.searchTime}秒)</small>
                         
                         <div class="search-form">
@@ -39,20 +39,19 @@
                             </div>
                           </form>
                         </div>
-                        
+                  <#if (dlcLogResult.dlcLogBaseResults?size>0)>
                         <!-- 分布式日志搜索结果渲染 -->
                         <#list dlcLogResult.dlcLogBaseResults as dlcLogBaseResult>
 	                       <div class="hr-line-dashed"></div>
 	                       <div class="search-result">
-	                           <h3><a href="search_results.html#">${dlcLogBaseResult.content}</a></h3>
-	                           <a href="search_results.html#" class="search-link">主机IP：172.26.4.79, 系统来源：${dlcLogBaseResult.systemName}, 记录时间：${dlcLogBaseResult.logRecordTime}</a>
-	                           <p>
-	                              ${dlcLogBaseResult.content}	
-	                           </p>
+	                           <!-- <h3><a href="search_results.html#">${dlcLogBaseResult.content}</a></h3> -->
+	                           <a href="search_results.html#" class="search-link">主机IP：${dlcLogBaseResult.hostIp!}, 系统来源：${dlcLogBaseResult.systemName!}, 记录时间：${dlcLogBaseResult.logRecordTime!}</a>
+	                           <h3>
+	                              ${dlcLogBaseResult.content!}	
+	                           </h3>
 	                       </div>
                         </#list>
                         <!-- 分布式日志搜索结果渲染结束 -->
-                        
                         <div class="hr-line-dashed"></div>
                         <div class="text-center">
                             <div class="btn-group">
@@ -69,6 +68,13 @@
                                 </button>
                             </div>
                         </div>
+                  <#else>
+                       <div class="search-result">
+                           <h3 align="center">
+                                                                          抱歉！没有找到"${dlcLogResult.keyWord}"有关的日志记录。
+                           </h3>
+                       </div>      
+                 </#if>
                     </div>
                 </div>
             </div>
