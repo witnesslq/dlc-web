@@ -23,11 +23,11 @@
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
                         <h2>
-                                为您找到相关结果约${dlcLogResult.dlcLogBaseResults?size!0}个： <span class="text-navy">${dlcLogResult.keyWord}</span>
+                                为您找到相关日志记录约${dlcLogResult.dlcLogBaseResults?size!0}个： <span class="text-navy">${dlcLogResult.keyWord}</span>
                         </h2>
-                        <small>搜索用时  (${dlcLogResult.searchTime}秒)</small>
+                        <small>搜索用时  (${dlcLogResult.searchTime}秒)</small>   
                         
-                        <div class="search-form">
+                        <div class="search-form">                     
                           <form action="/dlc/log/query" method="get">
                             <div class="input-group">
                                 <input type="text" placeholder="输入关键字" name="keyWord" class="form-control input-lg" value="${dlcLogResult.keyWord}">
@@ -49,11 +49,6 @@
 	                           <h3>
 	                              ${dlcLogBaseResult.content!}	
 	                           </h3>
-	                           <div id="showdiv@${dlcLogBaseResult_index}" style="display:none;">
-		                           <h3>
-		                              ${dlcLogBaseResult.content!}	
-		                           </h3>
-	                           </div>
 	                       </div>
                         </#list>
                         <!-- 分布式日志搜索结果渲染结束 -->

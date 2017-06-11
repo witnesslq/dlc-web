@@ -60,6 +60,7 @@ public class DlcLogQueryController {
 	@GetMapping(value = "/log/query", produces = { "application/json" })
 	public ModelAndView logQuery(
 			@RequestParam(value = "keyWord", required = false) String keyWord) {
+		LOGGER.info("^------- DLC 日志查询开始，keyWord:[" + keyWord + "] -------^");
 		long startTime = System.currentTimeMillis();
 		List<DlcLog> queryDlcLogs = dlcLogQueryService.logQuery(keyWord);
 		long endTime = System.currentTimeMillis();
@@ -68,6 +69,7 @@ public class DlcLogQueryController {
 				keyWord, searchTime, queryDlcLogs);
 		ModelAndView modelAndView = new ModelAndView("search_results");
 		modelAndView.addObject("dlcLogResult", dlcLogResult);
+		LOGGER.info("^------- DLC 日志查询结束  -------^");
 		return modelAndView;
 	}
 }
