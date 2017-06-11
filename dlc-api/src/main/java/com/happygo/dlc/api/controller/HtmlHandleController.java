@@ -36,4 +36,14 @@ public class HtmlHandleController {
 	public ModelAndView index_v1() {
 		return new ModelAndView("index_v1");
 	}
+	
+	/**
+	* @MethodName: index
+	* @Description: the index
+	* @return ModelAndView
+	*/
+	@RequestMapping(value = "/html/index")
+	public ModelAndView index() {
+		return new ModelAndView("search_results");
+	}
 }
