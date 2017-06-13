@@ -16,7 +16,7 @@ package com.happygo.dlc.common.entity.helper;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.happgo.dlc.base.DlcLog;
+import com.happgo.dlc.base.bean.DlcLog;
 import com.happygo.dlc.common.DateConstants;
 import com.happygo.dlc.common.entity.DlcLogBaseResult;
 import com.happygo.dlc.common.entity.DlcLogResult;
