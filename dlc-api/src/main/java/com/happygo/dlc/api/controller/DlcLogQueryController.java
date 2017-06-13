@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.happgo.dlc.base.DlcLog;
+import com.happgo.dlc.base.bean.DlcLog;
 import com.happygo.dlc.biz.service.DlcLogQueryService;
 import com.happygo.dlc.common.entity.DlcLogResult;
 import com.happygo.dlc.common.entity.helper.DlcLogResultHelper;

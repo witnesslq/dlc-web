@@ -3,11 +3,11 @@
 * 
 * All  right  reserved.
 *
-* Created  on  2017年6月4日 上午10:12:30
+* Created  on  2017年6月13日 下午9:57:07
 *
-* @Package com.happygo.dlc.dal  
-* @Title: DlcLogQueryCallback.java
-* @Description: DlcLogQueryCallback.java
+* @Package com.happygo.dlc.dal.access  
+* @Title: DlcMoreLikeThisLogQueryCallback.java
+* @Description: DlcMoreLikeThisLogQueryCallback.java
 * @author sxp (1378127237@qq.com) 
 * @version 1.0.0 
 */
@@ -23,13 +23,13 @@ import com.happgo.dlc.base.bean.DlcLog;
 import com.happgo.dlc.base.ignite.service.DlcIgniteService;
 
 /**
- * ClassName:DlcLogQueryCallback
- * @Description: DlcLogQueryCallback.java
+ * ClassName:DlcMoreLikeThisLogQueryCallback
+ * @Description: DlcMoreLikeThisLogQueryCallback.java
  * @author sxp (1378127237@qq.com) 
- * @date:2017年6月4日 上午10:12:30
+ * @date:2017年6月13日 下午9:57:07
  */
-public class DlcLogQueryCallback implements IgniteCallable<List<DlcLog>> {
-
+public class DlcMoreLikeThisLogQueryCallback implements IgniteCallable<List<DlcLog>> {
+	
 	/**
 	 * long the serialVersionUID 
 	 */
@@ -51,13 +51,13 @@ public class DlcLogQueryCallback implements IgniteCallable<List<DlcLog>> {
 	 * String the queryMode 
 	 */
 	private String queryMode;
-
+	
 	/**
-	 * Constructor com.happygo.dlc.dal.access.DlcLogQueryCallback
+	 * Constructor com.happygo.dlc.dal.access.DlcMoreLikeThisLogQueryCallback
 	 * @param keyWord
 	 * @param queryMode
 	 */
-	public DlcLogQueryCallback(String keyWord, String queryMode) {
+	public DlcMoreLikeThisLogQueryCallback(String keyWord, String queryMode) {
 		this.keyWord = keyWord;
 		this.queryMode = queryMode;
 	}

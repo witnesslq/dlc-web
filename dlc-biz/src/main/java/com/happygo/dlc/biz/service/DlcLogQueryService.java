@@ -15,7 +15,7 @@ package com.happygo.dlc.biz.service;
 
 import java.util.List;
 
-import com.happgo.dlc.base.DlcLog;
+import com.happgo.dlc.base.bean.DlcLog;
 
 /**
  * ClassName:DlcLogQueryService

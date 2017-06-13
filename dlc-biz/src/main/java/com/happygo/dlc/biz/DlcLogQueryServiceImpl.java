@@ -22,7 +22,8 @@ import org.apache.ignite.Ignite;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.happgo.dlc.base.DlcLog;
+import com.happgo.dlc.base.DlcConstants;
+import com.happgo.dlc.base.bean.DlcLog;
 import com.happygo.dlc.biz.service.DlcLogQueryService;
 import com.happygo.dlc.dal.access.DlcLogQueryCallback;
 
@@ -48,7 +49,7 @@ public class DlcLogQueryServiceImpl implements DlcLogQueryService {
 	 */
 	public List<DlcLog> logQuery(String keyWord) {
 		Collection<List<DlcLog>> logQueryResults = ignite.compute().broadcast(
-				new DlcLogQueryCallback(keyWord));
+				new DlcLogQueryCallback(keyWord, null));
 		if (logQueryResults == null) {
 			return null;
 		}
@@ -56,6 +57,17 @@ public class DlcLogQueryServiceImpl implements DlcLogQueryService {
 		for (Iterator<List<DlcLog>> it = logQueryResults.iterator(); it
 				.hasNext();) {
 			logQueryDlcLogs.addAll(it.next());
+		}
+		if (logQueryDlcLogs.isEmpty()) {
+			logQueryResults = ignite.compute().broadcast(
+					new DlcLogQueryCallback(keyWord, DlcConstants.DLC_MORE_LIKE_THIS_QUERY_MODE));
+			if (logQueryResults == null) {
+				return null;
+			}
+			for (Iterator<List<DlcLog>> it = logQueryResults.iterator(); it
+					.hasNext();) {
+				logQueryDlcLogs.addAll(it.next());
+			}
 		}
 		return logQueryDlcLogs;
 	}

@@ -36,7 +36,7 @@ public class DefaultView extends WebMvcConfigurerAdapter{
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/").setViewName(
-				"forward:/dlc/html/index");
+				"forward:/dlc/welcome");
 		registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
 		super.addViewControllers(registry);
 	}
