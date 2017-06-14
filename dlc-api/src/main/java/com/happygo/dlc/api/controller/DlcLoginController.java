@@ -13,8 +13,6 @@
  */
 package com.happygo.dlc.api.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,27 +32,17 @@ import com.happgo.dlc.base.util.Strings;
 public class DlcLoginController {
 
 	/**
-	 * @MethodName: welcome
-	 * @Description: the method welcome
-	 * @return ModelAndView
-	 */
-	@GetMapping(value = "/welcome", produces = { "application/json" })
-	public ModelAndView welcome() {
-		return new ModelAndView("login");
-	}
-
-	/**
 	 * @MethodName: dlcLogin
 	 * @Description: the method dlcLogin
 	 * @param email
 	 * @param password
 	 * @return ModelAndView
 	 */
-	@PostMapping(value = "/login", produces = { "application/json" })
-	public ModelAndView dlcLogin(@RequestParam(value = "account") String email,
-			@RequestParam(value = "pwd") String password) {
+	@RequestMapping(value = "/login", produces = { "application/json" })
+	public ModelAndView dlcLogin(@RequestParam(value = "account", required = false) String email,
+			@RequestParam(value = "pwd", required = false) String password) {
 		if (Strings.isNotEmpty(email) && Strings.isNotEmpty(password)) {
-			return new ModelAndView("index");
+			return new ModelAndView("redirect:/dlc/index");
 		}
 		return new ModelAndView("login");
 	}
