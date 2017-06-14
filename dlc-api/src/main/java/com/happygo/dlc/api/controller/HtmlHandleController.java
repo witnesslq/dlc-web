@@ -28,22 +28,23 @@ import org.springframework.web.servlet.ModelAndView;
 public class HtmlHandleController {
 	
 	/**
+	* @MethodName: index
+	* @Description: the index
+	* @return
+	* @return ModelAndView
+	*/
+	@RequestMapping(value = "/index")
+	public ModelAndView index() {
+		return new ModelAndView("index");
+	}
+	
+	/**
 	* @MethodName: index_v1
 	* @Description: the index_v1
 	* @return ModelAndView
 	*/
-	@RequestMapping(value = "/html/index_v1")
+	@RequestMapping(value = "/index_v1")
 	public ModelAndView index_v1() {
 		return new ModelAndView("index_v1");
-	}
-	
-	/**
-	* @MethodName: index
-	* @Description: the index
-	* @return ModelAndView
-	*/
-	@RequestMapping(value = "/html/index")
-	public ModelAndView index() {
-		return new ModelAndView("search_results");
 	}
 }

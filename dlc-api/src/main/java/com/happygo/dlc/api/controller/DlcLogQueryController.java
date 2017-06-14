@@ -59,7 +59,7 @@ public class DlcLogQueryController {
 	 */
 	@GetMapping(value = "/log/query", produces = { "application/json" })
 	public ModelAndView logQuery(
-			@RequestParam(value = "keyWord", required = false) String keyWord) {
+			@RequestParam(value = "keyWord") String keyWord) {
 		LOGGER.info("^------- DLC 日志查询开始，keyWord:[" + keyWord + "] -------^");
 		long startTime = System.currentTimeMillis();
 		List<DlcLog> queryDlcLogs = dlcLogQueryService.logQuery(keyWord.trim());
