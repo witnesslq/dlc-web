@@ -58,16 +58,19 @@ public class DlcLogQueryServiceImpl implements DlcLogQueryService {
 				.hasNext();) {
 			logQueryDlcLogs.addAll(it.next());
 		}
-		if (logQueryDlcLogs.isEmpty()) {
-			logQueryResults = ignite.compute().broadcast(
-					new DlcLogQueryCallback(keyWord, DlcConstants.DLC_MORE_LIKE_THIS_QUERY_MODE));
-			if (logQueryResults == null) {
-				return null;
-			}
-			for (Iterator<List<DlcLog>> it = logQueryResults.iterator(); it
-					.hasNext();) {
-				logQueryDlcLogs.addAll(it.next());
-			}
+		if (!logQueryDlcLogs.isEmpty()) {
+			return logQueryDlcLogs;
+		}
+		
+		//如果完全匹配有结果，就无需在进行相似度查询
+		logQueryResults = ignite.compute().broadcast(
+				new DlcLogQueryCallback(keyWord, DlcConstants.DLC_MORE_LIKE_THIS_QUERY_MODE));
+		if (logQueryResults == null) {
+			return null;
+		}
+		for (Iterator<List<DlcLog>> it = logQueryResults.iterator(); it
+				.hasNext();) {
+			logQueryDlcLogs.addAll(it.next());
 		}
 		return logQueryDlcLogs;
 	}
