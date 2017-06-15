@@ -45,6 +45,6 @@ public class HtmlHandleController {
 	*/
 	@RequestMapping(value = "/index_v1")
 	public ModelAndView index_v1() {
-		return new ModelAndView("index_v1");
+		return new ModelAndView("pin_board");
 	}
 }
