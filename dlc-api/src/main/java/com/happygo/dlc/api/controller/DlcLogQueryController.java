@@ -72,4 +72,17 @@ public class DlcLogQueryController {
 		LOGGER.info("^------- DLC 日志查询结束  -------^");
 		return modelAndView;
 	}
+	
+	/**
+	* @MethodName: logDetail
+	* @Description: the logDetail
+	* @param logDetail
+	* @return ModelAndView
+	*/
+	@GetMapping(value = "/log/detail", produces = { "application/json" })
+	public ModelAndView logDetail(@RequestParam("logDetail") String logDetail) {
+		ModelAndView modelAndView = new ModelAndView("search_results_detail");
+		modelAndView.addObject("logDetail", logDetail);
+		return modelAndView;
+	}
 }
